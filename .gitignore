@@ -433,3 +433,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 Assemblies/0Harmony.dll
+*.zip
