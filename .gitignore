@@ -432,5 +432,6 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-Assemblies/0Harmony.dll
+0Harmony.dll
 *.zip
+_PublisherPlus.xml
