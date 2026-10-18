@@ -12,19 +12,35 @@ namespace UndraftAfterTucking
         static IEnumerable<Toil> Postfix(IEnumerable<Toil> values, JobDriver_TakeToBed __instance)
         {
             foreach (var toil in values) yield return toil;
-            var undraftToil = new Toil()
+            yield return UndraftToil.For(__instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(JobDriver_CarryToCryptosleepCasket), "MakeNewToils")]
+    public class CryptosleepCasketPatch
+    {
+        static IEnumerable<Toil> Postfix(IEnumerable<Toil> values, JobDriver_CarryToCryptosleepCasket __instance)
+        {
+            foreach (var toil in values) yield return toil;
+            yield return UndraftToil.For(__instance);
+        }
+    }
+
+    static class UndraftToil
+    {
+        public static Toil For(JobDriver driver)
+        {
+            return new Toil()
             {
                 initAction = () =>
                 {
-                    var pawn = __instance.pawn;
+                    var pawn = driver.pawn;
                     if (pawn.Drafted)
                     {
                         pawn.drafter.Drafted = false;
                     }
                 }
             };
-
-            yield return undraftToil;
         }
     }
 }

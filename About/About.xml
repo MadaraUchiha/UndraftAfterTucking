@@ -13,7 +13,7 @@
     </supportedVersions>
     <packageId>madarauchiha.undraftaftertucking</packageId>
     <description>
-        Undraft pawns after tucking to bed, allowing for medical care and other stuff if needed.
+        Undraft pawns after tucking to bed or putting someone in a cryptosleep casket, allowing for medical care and other stuff if needed.
     </description>
     <modDependencies>
         <li>
